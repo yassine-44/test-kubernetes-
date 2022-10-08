@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  namespace: default 
+  name: skyloud
+  labels:
+    app: skyloud
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: skyloud
+subjects:
+- kind: ServiceAccount
+  name: skyloud
+  namespace: default 
+roleRef:
+  kind: ClusterRole
+  apiGroup: rbac.authorization.k8s.io
+  name: system:skyloud

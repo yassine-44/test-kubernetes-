@@ -1,0 +1,34 @@
+apiVersion: apps/v1²
+kind: Deployment
+metadata:
+  name: skyloud-deployment 
+  labels:
+      app: test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+      - name: nginx
+        image: skyloud:1.0
+        ports:
+        - containerPort: 3000
+        env: 
+        -  name: skyloud
+           valueFrom:
+                  secretKeyRef:
+                        name: mysecret
+                        key: sensitive 
+        -  name: skyloud
+           valueFrom:
+                  secretKeyRef:
+                        name: skyloud
+                        key: non-sencitive-data
+
+                        
