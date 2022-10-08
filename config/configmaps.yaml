@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: skyloud
+  namespace: default
+data:
+  non-sencitive-data: mynameisyassinekrout
